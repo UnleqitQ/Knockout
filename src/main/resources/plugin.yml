@@ -1,6 +1,10 @@
 name: Knockout
 version: 1.0.0
 author: Traunmagil
+load: POSTWORLD
+depend:
+  - PosePlugin
+
 
 main: com.traunmagil.knockout.Main
 
