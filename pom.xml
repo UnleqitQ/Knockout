@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.traunmagil</groupId>
-    <artifactId>knockout</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>Knockout</artifactId>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>knockout</name>
+    <name>Knockout</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -74,10 +74,6 @@
         <repository>
             <id>sonatype</id>
             <url>https://oss.sonatype.org/content/groups/public/</url>
-        </repository>
-        <repository>
-            <id>sonatype</id>
-            <url>https://github.com/StumpStudio/PosePlugin/tree/master/poseplugin-api</url>
         </repository>
     </repositories>
 
