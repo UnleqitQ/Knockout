@@ -8,3 +8,10 @@ api-version: 1.16
 
 commands:
   deathnow:
+    description: Kill yourself when in knockout mode
+    permission: knockout.command.deathnow
+
+permissions:
+  knockout.command.deathnow:
+    default: true
+    description: Use /deathnow
