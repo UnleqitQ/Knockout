@@ -1,0 +1,10 @@
+name: Knockout
+version: 1.0.0
+author: Traunmagil
+
+main: com.traunmagil.knockout.Main
+
+api-version: 1.16
+
+commands:
+  deathnow:
