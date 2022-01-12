@@ -91,11 +91,18 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/GSit.jar</systemPath>
+            <groupId>dev.geco</groupId>
+            <artifactId>GSit</artifactId>
+            <version>parent</version>
+        </dependency>
+        <!--<dependency>
             <groupId>ru.armagidon</groupId>
             <artifactId>dist</artifactId>
             <version>parent</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/lib/PosePlugin.jar</systemPath>
-        </dependency>
+            <systemPath>libs/PosePlugin.jar</systemPath>
+        </dependency>-->
     </dependencies>
 </project>

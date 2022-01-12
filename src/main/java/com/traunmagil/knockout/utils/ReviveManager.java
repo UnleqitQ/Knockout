@@ -1,25 +1,17 @@
 package com.traunmagil.knockout.utils;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.print.CancelablePrintJob;
-
+import com.traunmagil.knockout.Main;
+import com.traunmagil.knockout.countdown.ReviveCountdown;
+import dev.geco.gsit.api.GSitAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.scheduler.BukkitTask;
 
-import com.traunmagil.knockout.Main;
-import com.traunmagil.knockout.countdown.ReviveCountdown;
-
-import ru.armagidon.poseplugin.PosePlugin;
-import ru.armagidon.poseplugin.api.PosePluginAPI;
-import ru.armagidon.poseplugin.api.player.PosePluginPlayer;
-import ru.armagidon.poseplugin.api.poses.AbstractPose;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ReviveManager {
-
+	
 	private Main main = Main.getInstance();
 	private HashMap<Player, Player> revivers;
 	private HashMap<Player, ReviveCountdown> revives;
@@ -30,11 +22,12 @@ public class ReviveManager {
 	}
 	
 	public void revivePlayer(Player reviver, Player toRevived) {
-		if(isReviving(reviver)) return;
+		if (isReviving(reviver))
+			return;
 		main.knManager.pauseKnockout(toRevived);
 		
 		resetPose(toRevived);
-		Bukkit.getScheduler().runTaskLater(main, ()-> {
+		Bukkit.getScheduler().runTaskLater(main, () -> {
 			reviver.addPassenger(toRevived);
 			checkPlayerPassenger(reviver, toRevived);
 			revivers.put(reviver, toRevived);
@@ -45,12 +38,13 @@ public class ReviveManager {
 	}
 	
 	public void stopRevivePlayer(Player reviver) {
-		if(!revivers.containsKey(reviver)) return;
+		if (!revivers.containsKey(reviver))
+			return;
 		Player toRevive = revivers.get(reviver);
 		revives.remove(toRevive);
 		revivers.remove(reviver);
 		
-		Bukkit.getScheduler().runTaskLater(main, ()->{
+		Bukkit.getScheduler().runTaskLater(main, () -> {
 			reviver.removePassenger(toRevive);
 		}, 10);
 		
@@ -64,7 +58,8 @@ public class ReviveManager {
 		main.knManager.removeKnockout(toRevive);
 		revives.remove(toRevive);
 		Player reviver = getReviver(toRevive);
-		if(reviver == null) return;
+		if (reviver == null)
+			return;
 		revivers.remove(reviver);
 		reviver.removePassenger(toRevive);
 		Bukkit.getScheduler().runTaskLater(main, () -> {
@@ -75,13 +70,15 @@ public class ReviveManager {
 	
 	private void checkPlayerPassenger(Player reviver, Player toRevive) {
 		new BukkitRunnable() {
+			
 			@Override
 			public void run() {
-				if(!wereRevived(toRevive)) {
+				if (!wereRevived(toRevive)) {
 					reviver.getPassengers().remove(toRevive);
 					cancel();
-				} else {
-					if(!reviver.getPassengers().contains(toRevive)) {
+				}
+				else {
+					if (!reviver.getPassengers().contains(toRevive)) {
 						reviver.addPassenger(toRevive);
 					}
 				}
@@ -94,11 +91,11 @@ public class ReviveManager {
 		Player reviver = null;
 		
 		for (Map.Entry<Player, Player> entry : revivers.entrySet()) {
-			if(entry.getValue().equals(toRevive)) {
+			if (entry.getValue().equals(toRevive)) {
 				reviver = entry.getKey();
 				break;
 			}
-	    }
+		}
 		
 		return reviver;
 	}
@@ -113,12 +110,13 @@ public class ReviveManager {
 	
 	public void resetPose(Player p) {
 		
-		PosePluginPlayer posePluginPlayer = PosePluginAPI.getAPI().getPlayerMap().getPosePluginPlayer(p);
+		/*PosePluginPlayer posePluginPlayer = PosePluginAPI.getAPI().getPlayerMap().getPosePluginPlayer(p);
 		posePluginPlayer.resetCurrentPose();
 		posePluginPlayer.stopPosingSilently();
-		PosePlugin.PLAYERS_POSES.remove(p);
+		PosePlugin.PLAYERS_POSES.remove(p);*/
+		GSitAPI.getPose(p).remove();
 		
-		try {
+		/*try {
 			ReflectionUtil.setInstanceValue(posePluginPlayer, "pose", AbstractPose.STANDING);
 		} catch (SecurityException e) {
 			// TODO Auto-generated catch block
@@ -135,7 +133,7 @@ public class ReviveManager {
 		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 	}
 	
 }

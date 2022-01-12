@@ -10,7 +10,6 @@ import net.md_5.bungee.api.ChatColor;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
-import ru.armagidon.poseplugin.api.PosePluginAPI;
 
 public class Main extends JavaPlugin {
 	
@@ -38,7 +37,6 @@ public class Main extends JavaPlugin {
 		
 		PREFIX = ChatColor.translateAlternateColorCodes('&', getConfig().getString("prefix")) + " ";
 		
-		PosePluginAPI.initialize(this);
 		this.fileManager = new FileManager();
 		this.langManager = new LanguageManager();
 		this.rvManager = new ReviveManager();

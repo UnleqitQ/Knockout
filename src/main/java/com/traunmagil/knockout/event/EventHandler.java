@@ -1,19 +1,10 @@
 package com.traunmagil.knockout.event;
 
-import java.util.ArrayList;
-
+import com.traunmagil.knockout.Main;
+import com.traunmagil.knockout.event.events.*;
 import org.bukkit.event.Listener;
 
-import com.traunmagil.knockout.Main;
-import com.traunmagil.knockout.event.events.BlockBreak;
-import com.traunmagil.knockout.event.events.BlockPlace;
-import com.traunmagil.knockout.event.events.EntityDamage;
-import com.traunmagil.knockout.event.events.EntityDamageByEntity;
-import com.traunmagil.knockout.event.events.PlayerDeath;
-import com.traunmagil.knockout.event.events.PlayerInteract;
-import com.traunmagil.knockout.event.events.PlayerInteractAtEntity;
-import com.traunmagil.knockout.event.events.PlayerLeave;
-import com.traunmagil.knockout.event.events.StopPosing;
+import java.util.ArrayList;
 
 public class EventHandler {
 	
@@ -34,11 +25,12 @@ public class EventHandler {
 		listener.add(new BlockPlace());
 		listener.add(new BlockBreak());
 		listener.add(new PlayerInteract());
-		listener.add(new PlayerInteractAtEntity());
+		listener.add(new PickupItem());
+		//listener.add(new PlayerInteractAtEntity());
 	}
 	
 	public void register() {
-		for(Listener l : listener) {
+		for (Listener l : listener) {
 			main.getServer().getPluginManager().registerEvents(l, main);
 		}
 	}

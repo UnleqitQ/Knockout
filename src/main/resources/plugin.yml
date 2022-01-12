@@ -3,7 +3,7 @@ version: 1.0.0
 author: Traunmagil
 load: POSTWORLD
 depend:
-  - PosePlugin
+  - GSit
 
 
 main: com.traunmagil.knockout.Main
