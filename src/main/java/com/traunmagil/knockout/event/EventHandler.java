@@ -26,7 +26,7 @@ public class EventHandler {
 		listener.add(new BlockBreak());
 		listener.add(new PlayerInteract());
 		listener.add(new PickupItem());
-		//listener.add(new PlayerInteractAtEntity());
+		listener.add(new PlayerInteractAtEntity());
 	}
 	
 	public void register() {

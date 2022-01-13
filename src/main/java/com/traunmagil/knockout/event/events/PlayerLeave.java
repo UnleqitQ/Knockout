@@ -16,8 +16,7 @@ public class PlayerLeave implements Listener {
 		Player p = e.getPlayer();
 		
 		if(main.knManager.isKnockout(p)) {
-			p.setHealth(0.0);
-			main.knManager.removeKnockout(p);
+			main.knManager.pauseKnockout(p);
 		}
 		
 	}
