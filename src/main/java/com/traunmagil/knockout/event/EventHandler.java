@@ -27,6 +27,7 @@ public class EventHandler {
 		listener.add(new PlayerInteract());
 		listener.add(new PickupItem());
 		listener.add(new PlayerInteractAtEntity());
+		listener.add(new PlayerJoin());
 	}
 	
 	public void register() {
